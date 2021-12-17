@@ -9,7 +9,7 @@ let ul = document.createElement('ul');
 
 function deleteItem() {
     if (deleteBtns.length) {
-        [...deleteBtns].map((btn) => {
+        deleteBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 tasks.splice(btn.dataset.id, 1);
                 render();
@@ -21,7 +21,7 @@ function deleteItem() {
 function render() {
     let str = '';
 
-    tasks.map((task, index) => {
+    tasks.forEach((task, index) => {
         str += `
             <li>
                 <span>${task}</span>
@@ -37,9 +37,7 @@ function render() {
     deleteItem();
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    render();
-});
+document.addEventListener("DOMContentLoaded", render);
 
 input.addEventListener('input', (e) => { 
     value = e.target.value;
